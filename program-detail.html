@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>프로그램 활동 소식 | 오세용재가복지센터</title>
+  <meta name="description" content="오세용재가복지센터 어르신 프로그램 활동 사진과 소식을 확인해 보세요.">
+  <link rel="stylesheet" href="/assets/style.css">
+
+  <style>
+    .detail-page {
+      min-height: 100vh;
+      padding: 130px 0 90px;
+      background: #fafafa;
+    }
+
+    .detail-container {
+      width: min(860px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .detail-back {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 32px;
+      color: #2f6b50;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .detail-article {
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .detail-header {
+      padding: 46px 48px 38px;
+    }
+
+    .detail-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .detail-category {
+      color: #2f6b50;
+      font-weight: 800;
+    }
+
+    .detail-header h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.35;
+      letter-spacing: -0.04em;
+    }
+
+    .detail-summary {
+      margin: 24px 0 0;
+      color: #666;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .detail-content {
+      padding: 0 48px 45px;
+    }
+
+    .detail-text {
+      margin: 0 0 40px;
+      color: #444;
+      font-size: 17px;
+      line-height: 2;
+      white-space: pre-line;
+      word-break: keep-all;
+    }
+
+    .detail-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .detail-gallery figure {
+      margin: 0;
+    }
+
+    .detail-gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      background: #eee;
+    }
+
+    .detail-bottom {
+      display: flex;
+      justify-content: center;
+      padding: 40px 0 0;
+    }
+
+    .detail-list-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 26px;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      background: #245f48;
+      border-radius: 999px;
+    }
+
+    .detail-status {
+      padding: 100px 30px;
+      text-align: center;
+      color: #777;
+      background: #fff;
+      border-radius: 20px;
+    }
+
+    @media (max-width: 640px) {
+      .detail-page {
+        padding: 100px 0 60px;
+      }
+
+      .detail-container {
+        width: min(100% - 24px, 860px);
+      }
+
+      .detail-header {
+        padding: 30px 24px 26px;
+      }
+
+      .detail-content {
+        padding: 0 24px 30px;
+      }
+
+      .detail-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .detail-text {
+        font-size: 16px;
+        line-height: 1.9;
+      }
+
+      .detail-gallery {
+        gap: 14px;
+      }
+
+      .detail-gallery img {
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header class="header">
+  <div class="container nav-wrap">
+    <a class="logo" href="/"><span>오</span>오세용재가복지센터</a>
+    <button class="menu-button" aria-label="메뉴 열기">☰</button>
+    <nav class="nav">
+      <a href="/#about">센터소개</a>
+      <a href="/#facility">시설안내</a>
+      <a href="/#programs">활동소식</a>
+      <a href="/#services">서비스</a>
+      <a class="call-link" href="tel:0316416669">전화상담</a>
+    </nav>
+  </div>
+</header>
+
+<main class="detail-page">
+  <div class="detail-container">
+    <a class="detail-back" href="/programs.html">← 전체 활동 목록</a>
+
+    <div id="program-detail">
+      <p class="detail-status">게시글을 불러오는 중입니다.</p>
+    </div>
+
+    <div class="detail-bottom">
+      <a class="detail-list-button" href="/programs.html">전체 활동 보기</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <b>오세용재가복지센터</b>
+      <p>경기도 이천시 설성면 진상미로707 설성하나로마트 2층</p>
+      <p>031-641-6669 · 월요일~토요일 운영</p>
+    </div>
+    <p>© 2026 오세용재가복지센터</p>
+  </div>
+</footer>
+
+<script>
+  const menuButton = document.querySelector(".menu-button");
+  const navigation = document.querySelector(".nav");
+
+  if (menuButton && navigation) {
+    menuButton.addEventListener("click", () => {
+      navigation.classList.toggle("open");
+    });
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  async function loadProgramDetail() {
+    const detail = document.getElementById("program-detail");
+    const params = new URLSearchParams(window.location.search);
+    const postKey = params.get("post");
+
+    if (!postKey) {
+      detail.innerHTML = `<p class="detail-status">게시글 주소가 올바르지 않습니다.</p>`;
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `/data/programs.json?v=${Date.now()}`,
+        { cache: "no-store" }
+      );
+
+      if (!response.ok) {
+        throw new Error(`데이터 오류: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const programs = Array.isArray(data.programs) ? data.programs : [];
+
+      const program = programs.find(item =>
+        item.published === true &&
+        (item.cover === postKey ||
+         (Array.isArray(item.images) && item.images[0] === postKey))
+      );
+
+      if (!program) {
+        detail.innerHTML = `<p class="detail-status">해당 게시글을 찾을 수 없습니다.</p>`;
+        return;
+      }
+
+      const images = Array.isArray(program.images)
+        ? program.images.filter(Boolean)
+        : [];
+
+      if (images.length === 0 && program.cover) {
+        images.push(program.cover);
+      }
+
+      const formattedDate = program.date
+        ? new Date(`${program.date}T00:00:00`).toLocaleDateString("ko-KR", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+          })
+        : "";
+
+      const galleryHtml = images.length
+        ? images.map((image, index) => `
+            <figure>
+              <img
+                src="${escapeHtml(image)}"
+                alt="${escapeHtml(program.title || "프로그램 활동")} 사진 ${index + 1}"
+                loading="${index === 0 ? "eager" : "lazy"}"
+              >
+            </figure>
+          `).join("")
+        : `<p class="detail-status">등록된 사진이 없습니다.</p>`;
+
+      detail.innerHTML = `
+        <article class="detail-article">
+          <header class="detail-header">
+            <div class="detail-meta">
+              <span class="detail-category">
+                ${escapeHtml(program.category || "프로그램")}
+              </span>
+              <time>${escapeHtml(formattedDate)}</time>
+            </div>
+
+            <h1>${escapeHtml(program.title || "프로그램 활동 소식")}</h1>
+
+            ${
+              program.summary
+                ? `<p class="detail-summary">${escapeHtml(program.summary)}</p>`
+                : ""
+            }
+          </header>
+
+          <div class="detail-content">
+            ${
+              program.content
+                ? `<p class="detail-text">${escapeHtml(program.content)}</p>`
+                : ""
+            }
+
+            <div class="detail-gallery">
+              ${galleryHtml}
+            </div>
+          </div>
+        </article>
+      `;
+
+      document.title =
+        `${program.title || "프로그램 활동 소식"} | 오세용재가복지센터`;
+
+    } catch (error) {
+      console.error(error);
+      detail.innerHTML = `
+        <p class="detail-status">
+          게시글을 불러오지 못했습니다.<br>
+          잠시 후 다시 확인해 주세요.
+        </p>
+      `;
+    }
+  }
+
+  loadProgramDetail();
+</script>
+</body>
+</html>
