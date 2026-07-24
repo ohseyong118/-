@@ -1,10 +1,350 @@
-<!doctype html><html lang="ko"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>프로그램 활동 소식 | 오세용재가복지센터</title>
-<meta name="description" content="이천·장호원·율면·설성면·모가면·일죽 어르신과 함께한 오세용재가복지센터 프로그램 활동 사진과 소식입니다.">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="https://ohseyong.vercel.app/programs.html"><link rel="stylesheet" href="/assets/style.css"></head>
-<body><header class="header"><div class="container nav-wrap"><a class="logo" href="/"><span>오</span>오세용재가복지센터</a><a class="call-link" href="tel:0316416669">전화상담</a></div></header>
-<main><section class="sub-hero"><div class="container"><p class="label">PROGRAM STORIES</p><h1>어르신 프로그램 활동 소식</h1><p>오세용재가복지센터에서 함께한 즐겁고 따뜻한 하루를 전합니다.</p></div></section><section class="section"><div class="container"><div id="program-all" class="program-grid"><p>활동 소식을 불러오는 중입니다.</p></div></div></section></main>
-<footer><div class="container footer-grid"><div><b>오세용재가복지센터</b><p>031-641-6669</p></div></div></footer>
-<script type="module" src="/assets/site-firebase.js"></script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>프로그램 활동 소식 | 오세용재가복지센터</title>
+
+  <meta
+    name="description"
+    content="오세용재가복지센터 어르신들의 인지활동, 신체활동, 여가활동과 일상 모습을 확인해 보세요."
+  >
+
+  <link rel="stylesheet" href="/assets/style.css">
+
+  <style>
+    .program-page {
+      min-height: 100vh;
+      padding: 130px 0 90px;
+      background: #fafafa;
+    }
+
+    .program-page-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 42px;
+    }
+
+    .program-page-head h1 {
+      margin: 8px 0 0;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.2;
+    }
+
+    .program-page-head p {
+      max-width: 520px;
+      margin: 0;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .all-program-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .all-program-card {
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .all-program-image {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #eee;
+    }
+
+    .all-program-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .all-program-card:hover .all-program-image img {
+      transform: scale(1.04);
+    }
+
+    .all-program-body {
+      padding: 22px;
+    }
+
+    .all-program-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 13px;
+      color: #777;
+      font-size: 13px;
+    }
+
+    .all-program-meta span {
+      color: #2f6b50;
+      font-weight: 700;
+    }
+
+    .all-program-body h2 {
+      margin: 0 0 12px;
+      font-size: 21px;
+      line-height: 1.45;
+    }
+
+    .all-program-body p {
+      margin: 0;
+      color: #666;
+      line-height: 1.75;
+      white-space: pre-line;
+    }
+
+    .program-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .program-gallery img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .program-status {
+      grid-column: 1 / -1;
+      padding: 70px 20px;
+      text-align: center;
+      color: #777;
+      background: #fff;
+      border-radius: 18px;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 45px;
+      padding: 14px 24px;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      background: #245f48;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 900px) {
+      .all-program-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .program-page-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .program-page {
+        padding: 105px 0 65px;
+      }
+
+      .all-program-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .program-page-head {
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header class="header">
+  <div class="container nav-wrap">
+    <a class="logo" href="/">
+      <span>오</span>오세용재가복지센터
+    </a>
+
+    <button class="menu-button" aria-label="메뉴 열기">☰</button>
+
+    <nav class="nav">
+      <a href="/#about">센터소개</a>
+      <a href="/#facility">시설안내</a>
+      <a href="/#programs">활동소식</a>
+      <a href="/#services">서비스</a>
+      <a class="call-link" href="tel:0316416669">전화상담</a>
+    </nav>
+  </div>
+</header>
+
+<main class="program-page">
+  <div class="container">
+    <div class="program-page-head">
+      <div>
+        <p class="label">DAILY STORIES</p>
+        <h1>어르신 프로그램<br>전체 활동 소식</h1>
+      </div>
+
+      <p>
+        오세용재가복지센터 어르신들의 인지활동, 신체활동,
+        여가 프로그램과 따뜻한 일상을 전해드립니다.
+      </p>
+    </div>
+
+    <div id="all-program-list" class="all-program-grid">
+      <p class="program-status">활동 소식을 불러오는 중입니다.</p>
+    </div>
+
+    <a class="back-button" href="/#programs">← 홈페이지로 돌아가기</a>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <b>오세용재가복지센터</b>
+      <p>경기도 이천시 설성면 진상미로707 설성하나로마트 2층</p>
+      <p>031-641-6669 · 월요일~토요일 운영</p>
+    </div>
+
+    <p>© 2026 오세용재가복지센터</p>
+  </div>
+</footer>
+
+<script>
+  const menuButton = document.querySelector(".menu-button");
+  const navigation = document.querySelector(".nav");
+
+  if (menuButton && navigation) {
+    menuButton.addEventListener("click", () => {
+      navigation.classList.toggle("open");
+    });
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  async function loadAllPrograms() {
+    const list = document.getElementById("all-program-list");
+
+    try {
+      const response = await fetch(
+        `/data/programs.json?v=${Date.now()}`,
+        { cache: "no-store" }
+      );
+
+      if (!response.ok) {
+        throw new Error(`데이터 오류: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      const programs = Array.isArray(data.programs)
+        ? data.programs
+            .filter(program => program.published === true)
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+        : [];
+
+      if (programs.length === 0) {
+        list.innerHTML = `
+          <p class="program-status">
+            아직 등록된 활동 소식이 없습니다.
+          </p>
+        `;
+        return;
+      }
+
+      list.innerHTML = programs.map(program => {
+        const images = Array.isArray(program.images)
+          ? program.images.filter(Boolean)
+          : [];
+
+        const cover =
+          program.cover ||
+          images[0] ||
+          "/assets/og-cover.jpg";
+
+        const formattedDate = program.date
+          ? new Date(`${program.date}T00:00:00`).toLocaleDateString("ko-KR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric"
+            })
+          : "";
+
+        const gallery = images.length > 1
+          ? `
+            <div class="program-gallery">
+              ${images.slice(1).map(image => `
+                <img
+                  src="${escapeHtml(image)}"
+                  alt="${escapeHtml(program.title || "프로그램 활동 사진")}"
+                  loading="lazy"
+                >
+              `).join("")}
+            </div>
+          `
+          : "";
+
+        return `
+          <article class="all-program-card">
+            <div class="all-program-image">
+              <img
+                src="${escapeHtml(cover)}"
+                alt="${escapeHtml(program.title || "프로그램 활동 사진")}"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="all-program-body">
+              <div class="all-program-meta">
+                <span>${escapeHtml(program.category || "프로그램")}</span>
+                <time>${escapeHtml(formattedDate)}</time>
+              </div>
+
+              <h2>${escapeHtml(program.title || "프로그램 활동 소식")}</h2>
+
+              <p>${escapeHtml(
+                program.content ||
+                program.summary ||
+                "오세용재가복지센터의 활동 소식입니다."
+              )}</p>
+
+              ${gallery}
+            </div>
+          </article>
+        `;
+      }).join("");
+
+    } catch (error) {
+      console.error(error);
+
+      list.innerHTML = `
+        <p class="program-status">
+          활동 소식을 불러오지 못했습니다.<br>
+          잠시 후 다시 확인해 주세요.
+        </p>
+      `;
+    }
+  }
+
+  loadAllPrograms();
+</script>
+</body>
+</html>
