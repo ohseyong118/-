@@ -21,7 +21,7 @@
     <header class="topbar">
       <div>
         <small>OHSEYONG ADMIN</small>
-        <h1>오늘의 활동 올리기</h1>
+        <h1>센터 소식 올리기</h1>
         <p id="userEmail"></p>
       </div>
       <button id="logoutBtn" class="outline">로그아웃</button>
@@ -41,7 +41,8 @@
           <option>여가활동</option>
           <option>생신잔치</option>
           <option>특별행사</option>
-          <option>식사</option>
+          <option>주간 식단표</option>
+          <option>오늘의 점심</option>
         </select>
       </label>
 
@@ -58,9 +59,9 @@
       </label>
 
       <label class="photo-picker">
-        <span>사진 선택</span>
+        <span id="photoLabel">사진 선택</span>
         <input id="photos" type="file" accept="image/*" multiple required>
-        <b>휴대폰 갤러리에서 최대 8장</b>
+        <b id="photoHint">휴대폰 갤러리에서 최대 8장</b>
       </label>
 
       <div id="preview" class="preview"></div>
@@ -76,6 +77,91 @@
     </section>
   </section>
 </main>
+
+<script>
+  const categorySelect = document.getElementById("category");
+  const photosInput = document.getElementById("photos");
+  const photoLabel = document.getElementById("photoLabel");
+  const photoHint = document.getElementById("photoHint");
+  const titleInput = document.getElementById("title");
+  const summaryInput = document.getElementById("summary");
+  const contentInput = document.getElementById("content");
+
+  function updateUploadFormByCategory() {
+    if (!categorySelect || !photosInput) return;
+
+    const category = categorySelect.value;
+    const isWeeklyMenu = category === "주간 식단표";
+    const isDailyMeal = category === "오늘의 점심";
+    const isMealCategory = isWeeklyMenu || isDailyMeal;
+
+    photosInput.multiple = !isMealCategory;
+
+    if (photoLabel) {
+      photoLabel.textContent = isWeeklyMenu
+        ? "주간 식단표 사진 선택"
+        : isDailyMeal
+          ? "오늘의 식판 사진 선택"
+          : "사진 선택";
+    }
+
+    if (photoHint) {
+      photoHint.textContent = isWeeklyMenu
+        ? "식단표 이미지 1장만 선택해 주세요."
+        : isDailyMeal
+          ? "오늘의 식판 사진 1장만 선택해 주세요."
+          : "휴대폰 갤러리에서 최대 8장";
+    }
+
+    if (titleInput) {
+      titleInput.placeholder = isWeeklyMenu
+        ? "예: 7월 27일~8월 1일 주간 식단표"
+        : isDailyMeal
+          ? "예: 7월 24일 오늘의 점심"
+          : "예: 어르신과 함께한 미술 프로그램";
+    }
+
+    if (summaryInput) {
+      summaryInput.placeholder = isWeeklyMenu
+        ? "이번 주 식단 안내를 작성해 주세요."
+        : isDailyMeal
+          ? "오늘 제공한 메뉴를 작성해 주세요."
+          : "홈페이지 목록에 표시될 설명";
+    }
+
+    if (contentInput) {
+      contentInput.placeholder = isWeeklyMenu
+        ? "식단 변경 안내 등 필요한 내용을 작성해 주세요."
+        : isDailyMeal
+          ? "밥, 국, 반찬 등 오늘의 메뉴를 작성해 주세요."
+          : "활동 내용과 어르신 반응을 작성해 주세요.";
+    }
+
+    if (isMealCategory && photosInput.files.length > 1) {
+      photosInput.value = "";
+    }
+  }
+
+  if (categorySelect) {
+    categorySelect.addEventListener("change", updateUploadFormByCategory);
+    updateUploadFormByCategory();
+  }
+
+  if (photosInput) {
+    photosInput.addEventListener("change", () => {
+      const category = categorySelect ? categorySelect.value : "";
+      const isMealCategory =
+        category === "주간 식단표" ||
+        category === "오늘의 점심";
+
+      if (isMealCategory && photosInput.files.length > 1) {
+        alert("식단표와 오늘의 점심은 사진을 1장만 선택해 주세요.");
+        photosInput.value = "";
+      }
+    });
+  }
+</script>
+
 <script type="module" src="/assets/admin-github.js"></script>
 </body>
 </html>

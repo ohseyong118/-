@@ -30,7 +30,7 @@ collections:
               - label: 분류
                 name: category
                 widget: select
-                options: ["인지활동", "미술활동", "음악활동", "신체활동", "여가활동", "생신잔치", "특별행사", "식사"]
+                options: ["인지활동", "미술활동", "음악활동", "신체활동", "여가활동", "생신잔치", "특별행사", "주간 식단표", "오늘의 점심"]
               - { label: 짧은 설명, name: summary, widget: text }
               - { label: 대표 사진, name: cover, widget: image, choose_url: false }
               - label: 추가 사진
