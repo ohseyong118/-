@@ -55,6 +55,7 @@
 <section class="section contact"><div class="container contact-grid"><div><p class="label">CONTACT</p><h2>이용 상담을 도와드립니다</h2><p class="lead">장기요양등급 신청부터 주간보호, 방문요양, 방문목욕 이용 절차까지 편안하게 문의해 주세요.</p></div><div class="call-card"><span>전화상담</span><a href="tel:0316416669">031-641-6669</a><p>경기도 이천시 설성면 진상미로707<br>설성하나로마트 2층</p><ul><li>주간보호 이용 상담</li><li>방문요양·방문목욕 상담</li><li>송영 가능 지역 상담</li></ul><a class="button primary full" href="tel:0316416669">지금 전화하기</a></div></div></section>
 </main>
 <footer><div class="container footer-grid"><div><b>오세용재가복지센터</b><p>경기도 이천시 설성면 진상미로707 설성하나로마트 2층</p><p>031-641-6669 · 월요일~토요일 운영</p></div><p>© 2026 오세용재가복지센터</p></div></footer>
+
 <script>
   const menuButton = document.querySelector(".menu-button");
   const navigation = document.querySelector(".nav");
@@ -113,8 +114,14 @@
             })
           : "";
 
+        const postKey = encodeURIComponent(program.cover || image);
+
         return `
-          <article class="program-card">
+          <a
+            class="program-card program-card-link"
+            href="/program-detail.html?post=${postKey}"
+            aria-label="${escapeHtml(program.title || "프로그램 활동 소식")} 상세보기"
+          >
             <div class="program-image">
               <img
                 src="${escapeHtml(image)}"
@@ -132,7 +139,7 @@
               <h3>${escapeHtml(program.title || "프로그램 활동 소식")}</h3>
               <p>${escapeHtml(description)}</p>
             </div>
-          </article>
+          </a>
         `;
       }).join("");
 
@@ -159,4 +166,5 @@
 
   loadPrograms();
 </script>
-</body></html>
+</body>
+</html>
