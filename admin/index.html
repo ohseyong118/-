@@ -1,30 +1,81 @@
-<!doctype html><html lang="ko"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>오세용재가복지센터 사진 관리자</title><link rel="stylesheet" href="/assets/admin.css"></head>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2d6b4d">
+<title>오세용 활동사진 관리자</title>
+<link rel="stylesheet" href="/assets/admin-mobile.css">
+</head>
 <body>
-<main class="admin-shell">
-  <section id="login-view" class="login-card">
-    <div class="admin-logo">오</div><h1>프로그램 사진 관리자</h1>
-    <p>등록된 관리자 Google 계정으로 로그인하세요.</p>
-    <button id="login-button" class="primary-button">Google로 로그인</button>
-    <p id="login-message" class="message"></p>
+<main class="shell">
+  <section id="login" class="login-card">
+    <div class="logo">오</div>
+    <h1>활동사진 관리자</h1>
+    <p>등록된 Google 계정으로 로그인하세요.</p>
+    <button id="loginBtn" class="primary">Google로 로그인</button>
+    <p id="loginMsg" class="msg"></p>
   </section>
-  <section id="admin-view" class="admin-view hidden">
-    <header class="admin-header"><div><p class="eyebrow">OHSEYONG ADMIN</p><h1>활동 소식 등록</h1><p id="user-info"></p></div><button id="logout-button" class="outline-button">로그아웃</button></header>
-    <form id="post-form" class="post-form">
-      <label>활동 날짜<input id="date" type="date" required></label>
-      <label>활동 제목<input id="title" type="text" placeholder="예: 설성면 어르신과 함께한 음악 프로그램" required maxlength="80"></label>
-      <label>프로그램 분류<select id="category"><option>인지활동</option><option>미술활동</option><option>음악활동</option><option>신체활동</option><option>여가활동</option><option>생신잔치</option><option>특별행사</option><option>식사</option></select></label>
-      <label>짧은 설명<textarea id="summary" rows="3" placeholder="홈페이지 목록에 보일 간단한 설명" required maxlength="250"></textarea></label>
-      <label>자세한 활동 내용<textarea id="content" rows="7" placeholder="무엇을 했는지, 어르신 반응은 어땠는지 작성해 주세요."></textarea></label>
-      <label>사진 선택<input id="images" type="file" accept="image/*" multiple required><small>최대 10장, 사진당 8MB 이하 권장</small></label>
-      <div id="preview" class="preview-grid"></div>
-      <button id="submit-button" type="submit" class="primary-button">활동 소식 게시하기</button>
+
+  <section id="panel" class="hidden">
+    <header class="topbar">
+      <div>
+        <small>OHSEYONG ADMIN</small>
+        <h1>오늘의 활동 올리기</h1>
+        <p id="userEmail"></p>
+      </div>
+      <button id="logoutBtn" class="outline">로그아웃</button>
+    </header>
+
+    <form id="postForm" class="card">
+      <label>활동 날짜
+        <input id="date" type="date" required>
+      </label>
+
+      <label>프로그램 분류
+        <select id="category" required>
+          <option>인지활동</option>
+          <option>미술활동</option>
+          <option>음악활동</option>
+          <option>신체활동</option>
+          <option>여가활동</option>
+          <option>생신잔치</option>
+          <option>특별행사</option>
+          <option>식사</option>
+        </select>
+      </label>
+
+      <label>제목
+        <input id="title" type="text" maxlength="80" placeholder="예: 어르신과 함께한 미술 프로그램" required>
+      </label>
+
+      <label>짧은 설명
+        <textarea id="summary" rows="3" maxlength="250" placeholder="홈페이지 목록에 표시될 설명" required></textarea>
+      </label>
+
+      <label>자세한 내용
+        <textarea id="content" rows="6" placeholder="활동 내용과 어르신 반응을 작성해 주세요."></textarea>
+      </label>
+
+      <label class="photo-picker">
+        <span>사진 선택</span>
+        <input id="photos" type="file" accept="image/*" multiple required>
+        <b>휴대폰 갤러리에서 최대 8장</b>
+      </label>
+
+      <div id="preview" class="preview"></div>
+
+      <button id="publishBtn" class="primary" type="submit">게시하기</button>
       <progress id="progress" class="hidden" max="100" value="0"></progress>
-      <p id="form-message" class="message"></p>
+      <p id="status" class="msg"></p>
     </form>
-    <section class="recent"><h2>최근 게시물</h2><div id="recent-posts"></div></section>
+
+    <section class="card">
+      <h2>최근 게시물</h2>
+      <div id="recent"></div>
+    </section>
   </section>
 </main>
-<script type="module" src="/assets/admin-firebase.js"></script>
-</body></html>
+<script type="module" src="/assets/admin-github.js"></script>
+</body>
+</html>
