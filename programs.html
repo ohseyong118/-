@@ -34,7 +34,7 @@
       line-height: 1.2;
     }
 
-    .program-page-head p {
+    .program-page-head > p {
       max-width: 520px;
       margin: 0;
       color: #666;
@@ -48,11 +48,20 @@
     }
 
     .all-program-card {
+      display: block;
       overflow: hidden;
+      color: inherit;
+      text-decoration: none;
       background: #fff;
       border: 1px solid #e8e8e8;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .all-program-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.1);
     }
 
     .all-program-image {
@@ -98,25 +107,18 @@
       line-height: 1.45;
     }
 
+    .all-program-card:hover h2 {
+      color: #2f6b50;
+    }
+
     .all-program-body p {
+      display: -webkit-box;
+      overflow: hidden;
       margin: 0;
       color: #666;
       line-height: 1.75;
-      white-space: pre-line;
-    }
-
-    .program-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 18px;
-    }
-
-    .program-gallery img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 10px;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
     }
 
     .program-status {
@@ -280,6 +282,8 @@
           images[0] ||
           "/assets/og-cover.jpg";
 
+        const postKey = encodeURIComponent(program.cover || images[0] || "");
+
         const formattedDate = program.date
           ? new Date(`${program.date}T00:00:00`).toLocaleDateString("ko-KR", {
               year: "numeric",
@@ -288,22 +292,17 @@
             })
           : "";
 
-        const gallery = images.length > 1
-          ? `
-            <div class="program-gallery">
-              ${images.slice(1).map(image => `
-                <img
-                  src="${escapeHtml(image)}"
-                  alt="${escapeHtml(program.title || "프로그램 활동 사진")}"
-                  loading="lazy"
-                >
-              `).join("")}
-            </div>
-          `
-          : "";
+        const description =
+          program.summary ||
+          program.content ||
+          "오세용재가복지센터의 활동 소식입니다.";
 
         return `
-          <article class="all-program-card">
+          <a
+            class="all-program-card"
+            href="/program-detail.html?post=${postKey}"
+            aria-label="${escapeHtml(program.title || "프로그램 활동 소식")} 상세보기"
+          >
             <div class="all-program-image">
               <img
                 src="${escapeHtml(cover)}"
@@ -320,15 +319,9 @@
 
               <h2>${escapeHtml(program.title || "프로그램 활동 소식")}</h2>
 
-              <p>${escapeHtml(
-                program.content ||
-                program.summary ||
-                "오세용재가복지센터의 활동 소식입니다."
-              )}</p>
-
-              ${gallery}
+              <p>${escapeHtml(description)}</p>
             </div>
-          </article>
+          </a>
         `;
       }).join("");
 
