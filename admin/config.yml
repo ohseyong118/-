@@ -1,0 +1,40 @@
+backend:
+  name: github
+  repo: ohseyong118/-
+  branch: main
+  base_url: https://ohseyong.vercel.app
+  auth_endpoint: api/auth
+
+site_url: https://ohseyong.vercel.app
+display_url: https://ohseyong.vercel.app
+locale: ko
+media_folder: uploads/programs
+public_folder: /uploads/programs
+
+collections:
+  - name: homepage_data
+    label: 홈페이지 관리
+    files:
+      - name: programs
+        label: 프로그램 활동 사진
+        file: data/programs.json
+        fields:
+          - label: 프로그램 활동 목록
+            name: programs
+            widget: list
+            summary: "{{fields.date}} · {{fields.title}}"
+            fields:
+              - { label: 공개, name: published, widget: boolean, default: true }
+              - { label: 활동 날짜, name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: 활동 제목, name: title, widget: string, hint: "예: 설성면 어르신과 함께한 음악 프로그램" }
+              - label: 분류
+                name: category
+                widget: select
+                options: ["인지활동", "미술활동", "음악활동", "신체활동", "여가활동", "생신잔치", "특별행사", "식사"]
+              - { label: 짧은 설명, name: summary, widget: text }
+              - { label: 대표 사진, name: cover, widget: image, choose_url: false }
+              - label: 추가 사진
+                name: images
+                widget: list
+                required: false
+                field: { label: 사진, name: image, widget: image, choose_url: false }
