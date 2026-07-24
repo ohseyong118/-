@@ -55,5 +55,108 @@
 <section class="section contact"><div class="container contact-grid"><div><p class="label">CONTACT</p><h2>이용 상담을 도와드립니다</h2><p class="lead">장기요양등급 신청부터 주간보호, 방문요양, 방문목욕 이용 절차까지 편안하게 문의해 주세요.</p></div><div class="call-card"><span>전화상담</span><a href="tel:0316416669">031-641-6669</a><p>경기도 이천시 설성면 진상미로707<br>설성하나로마트 2층</p><ul><li>주간보호 이용 상담</li><li>방문요양·방문목욕 상담</li><li>송영 가능 지역 상담</li></ul><a class="button primary full" href="tel:0316416669">지금 전화하기</a></div></div></section>
 </main>
 <footer><div class="container footer-grid"><div><b>오세용재가복지센터</b><p>경기도 이천시 설성면 진상미로707 설성하나로마트 2층</p><p>031-641-6669 · 월요일~토요일 운영</p></div><p>© 2026 오세용재가복지센터</p></div></footer>
-<script type="module" src="/assets/site-firebase.js"></script>
+<script>
+  const menuButton = document.querySelector(".menu-button");
+  const navigation = document.querySelector(".nav");
+
+  if (menuButton && navigation) {
+    menuButton.addEventListener("click", () => {
+      navigation.classList.toggle("open");
+    });
+  }
+
+  async function loadPrograms() {
+    const programList = document.getElementById("program-list");
+
+    try {
+      const response = await fetch(
+        `/data/programs.json?v=${Date.now()}`,
+        { cache: "no-store" }
+      );
+
+      if (!response.ok) {
+        throw new Error(`프로그램 데이터를 불러오지 못했습니다: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      const programs = Array.isArray(data.programs)
+        ? data.programs
+            .filter(program => program.published === true)
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 3)
+        : [];
+
+      if (programs.length === 0) {
+        programList.innerHTML = `
+          <p class="program-empty">등록된 활동 소식이 없습니다.</p>
+        `;
+        return;
+      }
+
+      programList.innerHTML = programs.map(program => {
+        const image =
+          program.cover ||
+          (Array.isArray(program.images) ? program.images[0] : "") ||
+          "/assets/og-cover.jpg";
+
+        const description =
+          program.summary ||
+          program.content ||
+          "오세용재가복지센터의 프로그램 활동 소식입니다.";
+
+        const formattedDate = program.date
+          ? new Date(`${program.date}T00:00:00`).toLocaleDateString("ko-KR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric"
+            })
+          : "";
+
+        return `
+          <article class="program-card">
+            <div class="program-image">
+              <img
+                src="${escapeHtml(image)}"
+                alt="${escapeHtml(program.title || "프로그램 활동 사진")}"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="program-card-body">
+              <div class="program-meta">
+                <span>${escapeHtml(program.category || "프로그램")}</span>
+                <time>${escapeHtml(formattedDate)}</time>
+              </div>
+
+              <h3>${escapeHtml(program.title || "프로그램 활동 소식")}</h3>
+              <p>${escapeHtml(description)}</p>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+    } catch (error) {
+      console.error(error);
+
+      programList.innerHTML = `
+        <p class="program-error">
+          활동 소식을 불러오지 못했습니다.<br>
+          잠시 후 다시 확인해 주세요.
+        </p>
+      `;
+    }
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  loadPrograms();
+</script>
 </body></html>
