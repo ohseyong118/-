@@ -153,3 +153,10 @@ footer p{color:#b9c9bf}
   .call-card>a:not(.button){font-size:29px}
   .program-card-body{padding:18px}
 }
+
+
+/* 자동 연동 주간 식단표 */
+.meal-date{margin:4px 0 0;color:#7b8a82;font-size:13px}
+.meal-view-button.is-hidden{display:none}
+.weekly-menu-image>img{display:block;width:100%;height:auto;max-height:650px;object-fit:contain;background:#f5f1e8}
+.weekly-menu-image:not(:has(img)) .weekly-menu-placeholder{display:flex}
