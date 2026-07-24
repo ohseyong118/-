@@ -31,6 +31,85 @@
   </script>
   <meta name="naver-site-verification" content="772dd7065a1ec920bf5d869b073de6f163577f57" />
 </head>
+  <script>
+async function loadLatestMeal() {
+  const titleElement = document.getElementById("todayMealTitle");
+  const descriptionElement = document.getElementById("todayMealDescription");
+  const galleryElement = document.getElementById("todayMealGallery");
+
+  if (!titleElement || !descriptionElement || !galleryElement) return;
+
+  try {
+    const response = await fetch(`/data/programs.json?v=${Date.now()}`);
+
+    if (!response.ok) {
+      throw new Error("식사 게시물을 불러오지 못했습니다.");
+    }
+
+    const posts = await response.json();
+
+    if (!Array.isArray(posts)) {
+      throw new Error("게시물 데이터 형식이 올바르지 않습니다.");
+    }
+
+    const mealPosts = posts
+      .filter(post => {
+        const category = String(post.category || "").trim();
+
+        return (
+          category === "오늘의 점심" ||
+          category === "식사" ||
+          category === "식단"
+        );
+      })
+      .sort((a, b) => {
+        const dateA = new Date(a.date || a.createdAt || 0);
+        const dateB = new Date(b.date || b.createdAt || 0);
+
+        return dateB - dateA;
+      });
+
+    const latestMeal = mealPosts[0];
+
+    if (!latestMeal) return;
+
+    titleElement.textContent =
+      latestMeal.title || "정성껏 준비한 오늘의 식사";
+
+    descriptionElement.textContent =
+      latestMeal.summary ||
+      latestMeal.description ||
+      latestMeal.content ||
+      "센터에서 직접 조리한 따뜻한 식사를 준비했습니다.";
+
+    const images = Array.isArray(latestMeal.images)
+      ? latestMeal.images
+      : latestMeal.image
+        ? [latestMeal.image]
+        : latestMeal.cover
+          ? [latestMeal.cover]
+          : [];
+
+    if (images.length === 0) return;
+
+    galleryElement.innerHTML = images
+      .slice(0, 4)
+      .map((image, index) => `
+        <img
+          src="${image}"
+          alt="${latestMeal.title || "오늘의 점심"} 사진 ${index + 1}"
+          loading="lazy"
+        >
+      `)
+      .join("");
+
+  } catch (error) {
+    console.error("오늘의 점심 로딩 오류:", error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadLatestMeal);
+</script>
 <body>
 <header class="header"><div class="container nav-wrap">
   <a class="logo" href="/"><span>오</span>오세용재가복지센터</a>
