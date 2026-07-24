@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#2d6b4d">
-<title>오세용 활동사진 관리자</title>
+<title>오세용재가복지센터 관리자</title>
 <link rel="stylesheet" href="/assets/admin-mobile.css">
 </head>
 <body>
 <main class="shell">
   <section id="login" class="login-card">
     <div class="logo">오</div>
-    <h1>활동사진 관리자</h1>
+    <h1>센터 게시물 관리자</h1>
     <p>등록된 Google 계정으로 로그인하세요.</p>
     <button id="loginBtn" class="primary">Google로 로그인</button>
     <p id="loginMsg" class="msg"></p>
@@ -28,11 +28,11 @@
     </header>
 
     <form id="postForm" class="card">
-      <label>활동 날짜
+      <label id="dateField">게시 날짜
         <input id="date" type="date" required>
       </label>
 
-      <label>프로그램 분류
+      <label id="categoryField">게시물 분류
         <select id="category" required>
           <option>인지활동</option>
           <option>미술활동</option>
@@ -46,15 +46,15 @@
         </select>
       </label>
 
-      <label>제목
+      <label id="titleField">제목
         <input id="title" type="text" maxlength="80" placeholder="예: 어르신과 함께한 미술 프로그램" required>
       </label>
 
-      <label>짧은 설명
-        <textarea id="summary" rows="3" maxlength="250" placeholder="홈페이지 목록에 표시될 설명" required></textarea>
+      <label id="summaryField">짧은 설명
+        <textarea id="summary" rows="3" maxlength="250" placeholder="홈페이지 목록에 표시될 설명"></textarea>
       </label>
 
-      <label>자세한 내용
+      <label id="contentField">자세한 내용
         <textarea id="content" rows="6" placeholder="활동 내용과 어르신 반응을 작성해 주세요."></textarea>
       </label>
 
@@ -80,86 +80,128 @@
 
 <script>
   const categorySelect = document.getElementById("category");
-  const photosInput = document.getElementById("photos");
-  const photoLabel = document.getElementById("photoLabel");
-  const photoHint = document.getElementById("photoHint");
+  const dateInput = document.getElementById("date");
   const titleInput = document.getElementById("title");
   const summaryInput = document.getElementById("summary");
   const contentInput = document.getElementById("content");
+  const photosInput = document.getElementById("photos");
+
+  const titleField = document.getElementById("titleField");
+  const summaryField = document.getElementById("summaryField");
+  const contentField = document.getElementById("contentField");
+  const photoLabel = document.getElementById("photoLabel");
+  const photoHint = document.getElementById("photoHint");
+  const postForm = document.getElementById("postForm");
+
+  function formatKoreanDate(dateValue) {
+    if (!dateValue) return "";
+
+    const date = new Date(`${dateValue}T00:00:00`);
+    if (Number.isNaN(date.getTime())) return "";
+
+    return `${date.getMonth() + 1}월 ${date.getDate()}일`;
+  }
+
+  function isMealCategory(category) {
+    return category === "주간 식단표" || category === "오늘의 점심";
+  }
 
   function updateUploadFormByCategory() {
-    if (!categorySelect || !photosInput) return;
+    if (!categorySelect) return;
 
     const category = categorySelect.value;
-    const isWeeklyMenu = category === "주간 식단표";
-    const isDailyMeal = category === "오늘의 점심";
-    const isMealCategory = isWeeklyMenu || isDailyMeal;
+    const weeklyMenu = category === "주간 식단표";
+    const dailyMeal = category === "오늘의 점심";
+    const regularPost = !weeklyMenu && !dailyMeal;
 
-    photosInput.multiple = !isMealCategory;
+    // 일반 프로그램
+    summaryField.hidden = !regularPost;
+    contentField.hidden = weeklyMenu;
 
-    if (photoLabel) {
-      photoLabel.textContent = isWeeklyMenu
-        ? "주간 식단표 사진 선택"
-        : isDailyMeal
-          ? "오늘의 식판 사진 선택"
-          : "사진 선택";
+    summaryInput.required = regularPost;
+    contentInput.required = dailyMeal;
+
+    photosInput.multiple = regularPost;
+
+    if (weeklyMenu) {
+      photoLabel.textContent = "주간 식단표 이미지";
+      photoHint.textContent = "완성된 주간 식단표 이미지 1장만 선택해 주세요.";
+      titleInput.placeholder = "예: 7월 넷째 주 주간 식단표";
+      contentInput.value = "";
+    } else if (dailyMeal) {
+      photoLabel.textContent = "오늘의 식판 사진";
+      photoHint.textContent = "오늘 제공된 식판 사진 1장만 선택해 주세요.";
+      titleInput.placeholder = "예: 7월 24일 오늘의 점심";
+      contentInput.placeholder = "예: 잡곡밥, 소고기미역국, 제육볶음, 계란찜, 배추김치";
+    } else {
+      photoLabel.textContent = "사진 선택";
+      photoHint.textContent = "휴대폰 갤러리에서 최대 8장";
+      titleInput.placeholder = "예: 어르신과 함께한 미술 프로그램";
+      summaryInput.placeholder = "홈페이지 목록에 표시될 설명";
+      contentInput.placeholder = "활동 내용과 어르신 반응을 작성해 주세요.";
     }
 
-    if (photoHint) {
-      photoHint.textContent = isWeeklyMenu
-        ? "식단표 이미지 1장만 선택해 주세요."
-        : isDailyMeal
-          ? "오늘의 식판 사진 1장만 선택해 주세요."
-          : "휴대폰 갤러리에서 최대 8장";
-    }
-
-    if (titleInput) {
-      titleInput.placeholder = isWeeklyMenu
-        ? "예: 7월 27일~8월 1일 주간 식단표"
-        : isDailyMeal
-          ? "예: 7월 24일 오늘의 점심"
-          : "예: 어르신과 함께한 미술 프로그램";
-    }
-
-    if (summaryInput) {
-      summaryInput.placeholder = isWeeklyMenu
-        ? "이번 주 식단 안내를 작성해 주세요."
-        : isDailyMeal
-          ? "오늘 제공한 메뉴를 작성해 주세요."
-          : "홈페이지 목록에 표시될 설명";
-    }
-
-    if (contentInput) {
-      contentInput.placeholder = isWeeklyMenu
-        ? "식단 변경 안내 등 필요한 내용을 작성해 주세요."
-        : isDailyMeal
-          ? "밥, 국, 반찬 등 오늘의 메뉴를 작성해 주세요."
-          : "활동 내용과 어르신 반응을 작성해 주세요.";
-    }
-
-    if (isMealCategory && photosInput.files.length > 1) {
+    if (isMealCategory(category) && photosInput.files.length > 1) {
       photosInput.value = "";
     }
   }
 
-  if (categorySelect) {
-    categorySelect.addEventListener("change", updateUploadFormByCategory);
-    updateUploadFormByCategory();
-  }
+  function prepareMealPost() {
+    if (!categorySelect) return;
 
-  if (photosInput) {
-    photosInput.addEventListener("change", () => {
-      const category = categorySelect ? categorySelect.value : "";
-      const isMealCategory =
-        category === "주간 식단표" ||
-        category === "오늘의 점심";
+    const category = categorySelect.value;
+    const dateText = formatKoreanDate(dateInput.value);
 
-      if (isMealCategory && photosInput.files.length > 1) {
-        alert("식단표와 오늘의 점심은 사진을 1장만 선택해 주세요.");
-        photosInput.value = "";
+    if (category === "주간 식단표") {
+      if (!titleInput.value.trim()) {
+        titleInput.value = dateText
+          ? `${dateText} 주간 식단표`
+          : "이번 주 주간 식단표";
       }
-    });
+
+      // 기존 업로드 스크립트가 summary 값을 사용해도 오류가 없도록 자동 입력
+      summaryInput.value = "센터에서 직접 준비하는 이번 주 식단 안내입니다.";
+      contentInput.value = "";
+    }
+
+    if (category === "오늘의 점심") {
+      if (!titleInput.value.trim()) {
+        titleInput.value = dateText
+          ? `${dateText} 오늘의 점심`
+          : "오늘의 점심";
+      }
+
+      // 홈페이지가 summary를 우선 표시하므로 메뉴 내용을 자동 복사
+      summaryInput.value =
+        contentInput.value.trim() ||
+        "센터에서 직접 조리한 따뜻한 오늘의 점심입니다.";
+    }
   }
+
+  categorySelect?.addEventListener("change", updateUploadFormByCategory);
+  dateInput?.addEventListener("change", () => {
+    const category = categorySelect?.value;
+    const dateText = formatKoreanDate(dateInput.value);
+
+    if (category === "오늘의 점심" && !titleInput.value.trim()) {
+      titleInput.value = `${dateText} 오늘의 점심`;
+    }
+  });
+
+  photosInput?.addEventListener("change", () => {
+    if (
+      isMealCategory(categorySelect?.value) &&
+      photosInput.files.length > 1
+    ) {
+      alert("주간 식단표와 오늘의 점심은 사진을 1장만 선택해 주세요.");
+      photosInput.value = "";
+    }
+  });
+
+  // 외부 모듈의 submit 처리보다 먼저 실행되도록 캡처 단계 사용
+  postForm?.addEventListener("submit", prepareMealPost, true);
+
+  updateUploadFormByCategory();
 </script>
 
 <script type="module" src="/assets/admin-github.js"></script>
