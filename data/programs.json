@@ -30,6 +30,18 @@
         "/uploads/programs/2026-07-24-1784877884230-5.jpg",
         "/uploads/programs/2026-07-24-1784877884230-6.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-07-24",
+      "category": "주간 식단표",
+      "title": "7월 20일~7월 25일 주간 식단표",
+      "summary": "센터에서 직접 준비하는 이번 주 식단 안내입니다.",
+      "content": "",
+      "cover": "/uploads/programs/2026-07-24-1784886058212-1.jpg",
+      "images": [
+        "/uploads/programs/2026-07-24-1784886058212-1.jpg"
+      ]
     }
   ]
 }
