@@ -42,6 +42,18 @@
       "images": [
         "/uploads/programs/2026-07-24-1784886058212-1.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-07-25",
+      "category": "오늘의 점심",
+      "title": "7월 25일 오늘의 점심",
+      "summary": "콩국수, 열무김치, 오이무침, 메밀전병",
+      "content": "콩국수, 열무김치, 오이무침, 메밀전병",
+      "cover": "/uploads/programs/2026-07-25-1784950287380-1.jpg",
+      "images": [
+        "/uploads/programs/2026-07-25-1784950287380-1.jpg"
+      ]
     }
   ]
 }
