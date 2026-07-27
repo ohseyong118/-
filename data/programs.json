@@ -115,6 +115,18 @@
         "/uploads/programs/2026-07-25-1784975180244-3.jpg",
         "/uploads/programs/2026-07-25-1784975180244-4.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-07-27",
+      "category": "오늘의 점심",
+      "title": "7월27일 오늘의 점심",
+      "summary": "콩밥,호박전,김치,제육볶음,미나리,머위대",
+      "content": "콩밥,호박전,김치,제육볶음,미나리,머위대",
+      "cover": "/uploads/programs/2026-07-27-1785119839392-1.jpg",
+      "images": [
+        "/uploads/programs/2026-07-27-1785119839392-1.jpg"
+      ]
     }
   ]
 }
