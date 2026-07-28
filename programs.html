@@ -257,11 +257,27 @@
 
       const data = await response.json();
 
-      const programs = Array.isArray(data.programs)
-        ? data.programs
-            .filter(program => program.published === true)
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-        : [];
+      const sourcePrograms = Array.isArray(data)
+        ? data
+        : Array.isArray(data.programs)
+          ? data.programs
+          : [];
+
+      const excludedCategories = new Set([
+        "주간 식단표",
+        "주간 식단",
+        "식단표",
+        "오늘의 점심",
+        "점심",
+        "식사"
+      ]);
+
+      const programs = sourcePrograms
+        .filter(program => program.published === true)
+        .filter(program => !excludedCategories.has(
+          String(program.category || "").trim()
+        ))
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
 
       if (programs.length === 0) {
         list.innerHTML = `
