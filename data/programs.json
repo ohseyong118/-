@@ -192,6 +192,18 @@
         "/uploads/programs/2026-07-29-1785313583960-7.jpg",
         "/uploads/programs/2026-07-29-1785313583960-8.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-07-30",
+      "category": "오늘의 점심",
+      "title": "7월30일 오늘의 점심",
+      "summary": "콩밥, 도토리묵, 돈육 메추리알 장조림, 겉절이, 깻잎무침, 닭곰탕",
+      "content": "콩밥, 도토리묵, 돈육 메추리알 장조림, 겉절이, 깻잎무침, 닭곰탕",
+      "cover": "/uploads/programs/2026-07-30-1785389425419-1.jpg",
+      "images": [
+        "/uploads/programs/2026-07-30-1785389425419-1.jpg"
+      ]
     }
   ]
 }
