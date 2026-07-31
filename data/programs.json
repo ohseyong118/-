@@ -223,6 +223,18 @@
         "/uploads/programs/2026-07-31-1785459157309-7.jpg",
         "/uploads/programs/2026-07-31-1785459157309-8.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-07-31",
+      "category": "오늘의 점심",
+      "title": "7월 31일 오늘의 점심",
+      "summary": "콩밥, 얼갈이된장국, 코다리찜, 쑥갓두부무침, 겉절이, 가지볶음",
+      "content": "콩밥, 얼갈이된장국, 코다리찜, 쑥갓두부무침, 겉절이, 가지볶음",
+      "cover": "/uploads/programs/2026-07-31-1785468187977-1.jpg",
+      "images": [
+        "/uploads/programs/2026-07-31-1785468187977-1.jpg"
+      ]
     }
   ]
 }
