@@ -312,6 +312,18 @@
         "/uploads/programs/2026-08-04-1785833355424-4.jpg",
         "/uploads/programs/2026-08-04-1785833355424-5.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-08-05",
+      "category": "오늘의 점심",
+      "title": "08월 05일 오늘의 점심",
+      "summary": "잡곡밥, 닭곰탕, 치커리무침, 동태전, 궁채나물, 겉절이",
+      "content": "잡곡밥, 닭곰탕, 치커리무침, 동태전, 궁채나물, 겉절이",
+      "cover": "/uploads/programs/2026-08-05-1785916754809-1.jpg",
+      "images": [
+        "/uploads/programs/2026-08-05-1785916754809-1.jpg"
+      ]
     }
   ]
 }
