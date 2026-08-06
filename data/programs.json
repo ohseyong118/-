@@ -374,6 +374,18 @@
       "images": [
         "/uploads/programs/2026-08-06-1785991400535-1.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-08-06",
+      "category": "주간 식단표",
+      "title": "8월 첫째주 식단표",
+      "summary": "센터에서 직접 준비하는 이번 주 식단 안내입니다.",
+      "content": "",
+      "cover": "/uploads/programs/2026-08-06-1785992852309-1.jpg",
+      "images": [
+        "/uploads/programs/2026-08-06-1785992852309-1.jpg"
+      ]
     }
   ]
 }
