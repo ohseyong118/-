@@ -362,6 +362,18 @@
         "/uploads/programs/2026-08-05-1785919645116-7.jpg",
         "/uploads/programs/2026-08-05-1785919645116-8.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-08-06",
+      "category": "오늘의 점심",
+      "title": "8월6잉 오늘의 점심",
+      "summary": "곤드레밥, 청국장, 제육볶음, 노각무침, 배추김치, 양상추샐러드",
+      "content": "곤드레밥, 청국장, 제육볶음, 노각무침, 배추김치, 양상추샐러드",
+      "cover": "/uploads/programs/2026-08-06-1785991400535-1.jpg",
+      "images": [
+        "/uploads/programs/2026-08-06-1785991400535-1.jpg"
+      ]
     }
   ]
 }
