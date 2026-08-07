@@ -403,6 +403,18 @@
         "/uploads/programs/2026-08-06-1786005275992-5.jpg",
         "/uploads/programs/2026-08-06-1786005275992-6.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-08-07",
+      "category": "오늘의 점심",
+      "title": "8월 7일 오늘의 점심",
+      "summary": "흰쌀밥, 오이미역냉국, 돼지갈비찜, 무생채, 배추김치, 호박볶음",
+      "content": "흰쌀밥, 오이미역냉국, 돼지갈비찜, 무생채, 배추김치, 호박볶음",
+      "cover": "/uploads/programs/2026-08-07-1786087888822-1.jpg",
+      "images": [
+        "/uploads/programs/2026-08-07-1786087888822-1.jpg"
+      ]
     }
   ]
 }
