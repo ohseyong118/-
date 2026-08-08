@@ -432,6 +432,18 @@
         "/uploads/programs/2026-08-07-1786092493226-5.jpg",
         "/uploads/programs/2026-08-07-1786092493226-6.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-08-08",
+      "category": "오늘의 점심",
+      "title": "08월 08일 오늘의 점심",
+      "summary": "잡곡밥, 팽이버섯된장국, 제육볶음, 숙주나물, 상추, 열무겉절이",
+      "content": "잡곡밥, 팽이버섯된장국, 제육볶음, 숙주나물, 상추, 열무겉절이",
+      "cover": "/uploads/programs/2026-08-08-1786164861134-1.jpg",
+      "images": [
+        "/uploads/programs/2026-08-08-1786164861134-1.jpg"
+      ]
     }
   ]
 }
