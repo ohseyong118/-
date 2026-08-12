@@ -468,6 +468,18 @@
       "images": [
         "/uploads/programs/2026-08-11-1786417653775-1.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-08-10",
+      "category": "주간 식단표",
+      "title": "8월 10~15일 식단표",
+      "summary": "센터에서 직접 준비하는 이번 주 식단 안내입니다.",
+      "content": "",
+      "cover": "/uploads/programs/2026-08-10-1786500590384-1.jpg",
+      "images": [
+        "/uploads/programs/2026-08-10-1786500590384-1.jpg"
+      ]
     }
   ]
 }
