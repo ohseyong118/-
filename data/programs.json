@@ -589,6 +589,18 @@
       "images": [
         "/uploads/programs/2026-08-20-1787196960012-1.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-08-20",
+      "category": "주간 식단표",
+      "title": "2026년 8월 17일 ~ 22일 식단표",
+      "summary": "센터에서 직접 준비하는 이번 주 식단 안내입니다.",
+      "content": "",
+      "cover": "/uploads/programs/2026-08-20-1787197087449-1.jpg",
+      "images": [
+        "/uploads/programs/2026-08-20-1787197087449-1.jpg"
+      ]
     }
   ]
 }
