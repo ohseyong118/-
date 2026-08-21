@@ -601,6 +601,18 @@
       "images": [
         "/uploads/programs/2026-08-20-1787197087449-1.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-08-21",
+      "category": "오늘의 점심",
+      "title": "08월 21일 오늘의 점심",
+      "summary": "잡곡밥, 순두부찌개, 돈갈비찜, 호박채전, 쪽파무생채, 배추김치",
+      "content": "잡곡밥, 순두부찌개, 돈갈비찜, 호박채전, 쪽파무생채, 배추김치",
+      "cover": "/uploads/programs/2026-08-21-1787280096546-1.jpg",
+      "images": [
+        "/uploads/programs/2026-08-21-1787280096546-1.jpg"
+      ]
     }
   ]
 }
