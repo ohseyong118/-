@@ -692,6 +692,18 @@
         "/uploads/programs/2026-08-31-1788244947983-7.jpg",
         "/uploads/programs/2026-08-31-1788244947983-8.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-09-03",
+      "category": "오늘의 점심",
+      "title": "2026년 9월 2일 오늘의 점심",
+      "summary": "완두콩밥, 도토리묵, 애호박나물, 부추전, 배추김치, 감자탕",
+      "content": "완두콩밥, 도토리묵, 애호박나물, 부추전, 배추김치, 감자탕",
+      "cover": "/uploads/programs/2026-09-03-1788446155138-1.jpg",
+      "images": [
+        "/uploads/programs/2026-09-03-1788446155138-1.jpg"
+      ]
     }
   ]
 }
