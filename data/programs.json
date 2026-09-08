@@ -735,6 +735,18 @@
         "/uploads/programs/2026-09-03-1788587083465-7.jpg",
         "/uploads/programs/2026-09-03-1788587083465-8.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-09-07",
+      "category": "주간 식단표",
+      "title": "2026년 9월 7일 ~ 2026년 9월 12일 식단표",
+      "summary": "센터에서 직접 준비하는 이번 주 식단 안내입니다.",
+      "content": "",
+      "cover": "/uploads/programs/2026-09-07-1788852939075-1.jpg",
+      "images": [
+        "/uploads/programs/2026-09-07-1788852939075-1.jpg"
+      ]
     }
   ]
 }
