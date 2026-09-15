@@ -771,6 +771,18 @@
       "images": [
         "/uploads/programs/2026-09-12-1789181944558-1.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-09-15",
+      "category": "오늘의 점심",
+      "title": "2026년 9월 15일 오늘의 점심",
+      "summary": "콩밥, 아웃된장국, 동그랑땡, 참나물무침, 배추김치, 김자반",
+      "content": "콩밥, 아웃된장국, 동그랑땡, 참나물무침, 배추김치, 김자반",
+      "cover": "/uploads/programs/2026-09-15-1789457505413-1.jpg",
+      "images": [
+        "/uploads/programs/2026-09-15-1789457505413-1.jpg"
+      ]
     }
   ]
 }
