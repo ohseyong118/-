@@ -807,6 +807,18 @@
       "images": [
         "/uploads/programs/2026-09-22-1790047489964-1.jpg"
       ]
+    },
+    {
+      "published": true,
+      "date": "2026-10-03",
+      "category": "주간 식단표",
+      "title": "2026년 10월 04일 ~ 2026년 10월 10일 주간식단표",
+      "summary": "센터에서 직접 준비하는 이번 주 식단 안내입니다.",
+      "content": "",
+      "cover": "/uploads/programs/2026-10-03-1790995086511-1.jpg",
+      "images": [
+        "/uploads/programs/2026-10-03-1790995086511-1.jpg"
+      ]
     }
   ]
 }
